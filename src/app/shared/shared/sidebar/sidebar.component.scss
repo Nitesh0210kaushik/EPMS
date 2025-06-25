@@ -1,0 +1,71 @@
+.sidenav-container {
+  height: 100vh;
+}
+
+.sidenav {
+  width: 220px;
+  background-color: #0b2a4e;
+  color: white;
+  padding-top: 20px;
+  overflow-x: hidden !important; // ✅ Prevent horizontal scroll
+  overflow-y: auto; // ✅ Allow vertical scroll if needed
+  // display: flex;
+  // flex-direction: column;
+}
+.sidebar-nav a span {
+  white-space: nowrap; // ✅ Prevent word wrap
+  overflow: hidden; // ✅ Trim overflow
+  text-overflow: ellipsis; // ✅ Show ...
+}
+
+.sidebar-logo {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px 20px;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  width: 100%;
+
+  a {
+    // width: 100%;
+    width: 100%; // ✅ Full width clickable
+    display: flex; // ✅ Row direction
+    flex-direction: row; // ✅ Side-by-side
+    align-items: center; // ✅ Vertically centered
+    justify-content: flex-start;
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin: 5px 0;
+    // display: flex;
+    // align-items: flex-start;
+    // flex-flow: row;
+    // text-align: left;
+    // align-items: center;
+    transition: background 0.3s ease;
+
+    mat-icon {
+      margin-right: 10px;
+    }
+
+    &.active,
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+.main-content {
+  padding: 24px;
+  background-color: #f4f6f9;
+  min-height: 100vh;
+}

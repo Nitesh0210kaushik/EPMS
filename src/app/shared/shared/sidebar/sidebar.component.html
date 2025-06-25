@@ -1,1 +1,58 @@
-<p>sidebar works!</p>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidebar-logo">EPMS</div>
+
+    <nav class="sidebar-nav">
+      <a
+        mat-button
+        (click)="goTo('dashboard')"
+        routerLink="/dashboard"
+        routerLinkActive="active"
+      >
+        <mat-icon>dashboard</mat-icon>
+        <span>Dashboard</span>
+      </a>
+      <a
+        mat-button
+        (click)="goTo('projects')"
+        routerLink="/projects"
+        routerLinkActive="active"
+      >
+        <mat-icon>folder</mat-icon>
+        <span>Projects</span>
+      </a>
+      <a
+        (click)="goTo('tasks')"
+        mat-button
+        routerLink="/tasks"
+        routerLinkActive="active"
+      >
+        <mat-icon>assignment</mat-icon>
+        <span>Tasks</span>
+      </a>
+      <a
+        mat-button
+        *ngIf="role === 'Admin'"
+        routerLink="/users"
+        routerLinkActive="active"
+      >
+        <mat-icon>group</mat-icon>
+        <span>Users</span>
+      </a>
+      <a
+        (click)="goTo('notifications')"
+        mat-button
+        routerLink="/notifications"
+        routerLinkActive="active"
+      >
+        <mat-icon>notifications</mat-icon>
+        <span>Notifications</span>
+      </a>
+    </nav>
+  </mat-sidenav>
+
+  <!-- MAIN CONTENT -->
+  <mat-sidenav-content class="main-content">
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
