@@ -1,6 +1,12 @@
 # to run --- npm install
 # open other terminal run - json-server --watch db.json --port 3000
 #ng serve
+
+
+for firstTime -- use--> admin@epms.com 
+#password--> 123456
+#role- admin
+
 # Epms
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.17.
