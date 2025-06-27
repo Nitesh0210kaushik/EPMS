@@ -19,6 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select'; // ✅ ADDED for role dropdown
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { MatSelectModule } from '@angular/material/select'; // ✅ ADDED for rol
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
 
     // Angular Material modules
     MatFormFieldModule,

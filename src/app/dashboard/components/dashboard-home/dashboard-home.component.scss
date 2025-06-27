@@ -4,6 +4,7 @@
 
 mat-sidenav {
   width: 220px; /* ✅ fixed width, not 100% or too large */
+  position: fixed;
 }
 
 .main-content {

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,6 +9,9 @@ import { Component, Input } from '@angular/core';
 export class HeaderComponent {
   @Input() title: string = '';
   @Input() icon: string = '';
-
-  logout() {}
+  constructor(private router: Router) {}
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProjectService } from '../../../core/core/services/project.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-project',
@@ -13,10 +13,19 @@ export class ProjectComponent {
   filteredProjects: any[] = [];
   searchTerm: string = '';
 
-  constructor(private projectService: ProjectService, private router: Router) {}
+  constructor(
+    private projectService: ProjectService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadProjects();
+
+    const projectId = this.route.snapshot.paramMap.get('projectId');
+    console.log('Current Project ID:', projectId);
+
+    // console.log('[rojecttt');
   }
 
   loadProjects(): void {

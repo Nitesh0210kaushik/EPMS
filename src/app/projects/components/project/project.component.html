@@ -1,8 +1,8 @@
 <div class="project-list">
   <div class="search-add">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" class="search-field">
       <mat-label>Search by name or status</mat-label>
-      <input matInput [(ngModel)]="searchTerm" (input)="search()" />
+      <input matInput [(ngModel)]="searchTerm" (input)="onSearch()" />
     </mat-form-field>
 
     <button mat-raised-button color="primary" routerLink="/projects/create">
@@ -11,16 +11,31 @@
   </div>
 
   <mat-card *ngFor="let project of filteredProjects" class="project-card">
-    <mat-card-title>{{ project.name }}</mat-card-title>
-    <mat-card-subtitle>Status: {{ project.status }}</mat-card-subtitle>
+    <mat-card-header>
+      <mat-card-title>{{ project.name }}</mat-card-title>
+      <mat-card-subtitle>Status: {{ project.status }}</mat-card-subtitle>
+    </mat-card-header>
+
     <mat-card-content>
-      Assigned Users: {{ project.assignedUsers.join(", ") }}
+      <div class="card-detail">
+        <strong>Assigned Users:</strong>
+        <span>{{ project.assignedUsers.join(", ") }}</span>
+      </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="primary" (click)="editProject(project.id)">
+
+    <mat-card-actions align="end">
+      <button
+        mat-stroked-button
+        color="primary"
+        (click)="editProject(project.id)"
+      >
         Edit
       </button>
-      <button mat-button color="warn" (click)="deleteProject(project.id)">
+      <button
+        mat-stroked-button
+        color="warn"
+        (click)="deleteProject(project.id)"
+      >
         Delete
       </button>
     </mat-card-actions>

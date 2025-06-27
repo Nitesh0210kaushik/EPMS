@@ -9,6 +9,7 @@ import { log } from 'console';
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.component.html',
   styleUrls: ['./dashboard-home.component.scss'],
+  // standalone: true,
 })
 export class DashboardHomeComponent implements OnInit {
   title = 'Dashboard';

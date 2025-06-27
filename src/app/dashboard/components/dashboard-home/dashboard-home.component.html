@@ -1,49 +1,36 @@
-<mat-sidenav-container class="layout-container">
-  <mat-sidenav mode="side" opened>
-    <app-sidebar></app-sidebar>
-  </mat-sidenav>
+<div class="dashboard-home">
+  <div class="kpi-cards">
+    <mat-card class="kpi-card">
+      <div class="kpi-title">Projects</div>
+      <div class="kpi-value">{{ projectCount }}</div>
+    </mat-card>
 
-  <mat-sidenav-content>
-    <app-header [title]="title" [icon]="icon"></app-header>
+    <mat-card class="kpi-card">
+      <div class="kpi-title">Active Users</div>
+      <div class="kpi-value">{{ userCount }}</div>
+    </mat-card>
 
-    <div class="main-content">
-      <div class="dashboard-home">
-        <div class="kpi-cards">
-          <mat-card class="kpi-card">
-            <div class="kpi-title">Projects</div>
-            <div class="kpi-value">{{ projectCount }}</div>
-          </mat-card>
+    <mat-card class="kpi-card">
+      <div class="kpi-title">Overdue Tasks</div>
+      <div class="kpi-value">{{ overdueTasks }}</div>
+    </mat-card>
+  </div>
 
-          <mat-card class="kpi-card">
-            <div class="kpi-title">Active Users</div>
-            <div class="kpi-value">{{ userCount }}</div>
-          </mat-card>
-
-          <mat-card class="kpi-card">
-            <div class="kpi-title">Overdue Tasks</div>
-            <div class="kpi-value">{{ overdueTasks }}</div>
-          </mat-card>
-        </div>
-
-        <!-- Task Status Chart -->
-        <mat-card class="chart-card">
-          <h3 class="chart-title">Task Distribution</h3>
-          <ngx-charts-bar-vertical
-            [view]="[700, 350]"
-            [results]="taskStatusData"
-            [scheme]="colorScheme"
-            [gradient]="false"
-            [xAxis]="true"
-            [yAxis]="true"
-            [legend]="true"
-            [showXAxisLabel]="true"
-            [xAxisLabel]="'Status'"
-            [showYAxisLabel]="true"
-            [yAxisLabel]="'Number of Tasks'"
-          >
-          </ngx-charts-bar-vertical>
-        </mat-card>
-      </div>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  <mat-card class="chart-card">
+    <h3 class="chart-title">Task Distribution</h3>
+    <ngx-charts-bar-vertical
+      [view]="[700, 350]"
+      [results]="taskStatusData"
+      [scheme]="colorScheme"
+      [gradient]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showXAxisLabel]="true"
+      [xAxisLabel]="'Status'"
+      [showYAxisLabel]="true"
+      [yAxisLabel]="'Number of Tasks'"
+    >
+    </ngx-charts-bar-vertical>
+  </mat-card>
+</div>

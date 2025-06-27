@@ -1,52 +1,58 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "admin@epms.com",
       "password": "123456",
       "role": "Admin",
       "token": "mock-token-admin"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "manager@epms.com",
       "password": "123456",
       "role": "Project Manager",
       "token": "mock-token-manager"
     },
     {
-      "id": 3,
+      "id": "3",
       "email": "dev@epms.com",
       "password": "123456",
       "role": "Developer",
       "token": "mock-token-developer"
     }
   ],
-
   "projects": [
     {
-      "id": 1,
+      "id": "1",
       "name": "EPMS Redesign",
       "status": "Active",
-      "assignedUsers": [1, 2]
+      "assignedUsers": [
+        1,
+        2
+      ]
     },
     {
-      "id": 2,
-      "name": "CRM Integration",
+      "id": "2",
+      "name": "CRM Integration Project",
       "status": "Completed",
-      "assignedUsers": [2, 3]
+      "assignedUsers": [
+        2,
+        3
+      ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Bug Tracking System",
       "status": "Pending",
-      "assignedUsers": [1]
+      "assignedUsers": [
+        1
+      ]
     }
   ],
-
   "tasks": [
     {
-      "id": 1,
+      "id": "1",
       "projectId": 1,
       "title": "Setup Angular Project",
       "status": "Done",
@@ -54,7 +60,7 @@
       "dueDate": "2025-06-30"
     },
     {
-      "id": 2,
+      "id": "2",
       "projectId": 1,
       "title": "Implement Auth Guard",
       "status": "In Progress",
@@ -62,7 +68,7 @@
       "dueDate": "2025-07-01"
     },
     {
-      "id": 3,
+      "id": "3",
       "projectId": 2,
       "title": "Integrate Dashboard KPIs",
       "status": "To Do",
@@ -70,7 +76,7 @@
       "dueDate": "2025-07-05"
     },
     {
-      "id": 4,
+      "id": "4",
       "projectId": 2,
       "title": "UI Testing",
       "status": "Done",
@@ -78,7 +84,7 @@
       "dueDate": "2025-07-09"
     },
     {
-      "id": 5,
+      "id": "5",
       "projectId": 3,
       "title": "Final Deployment",
       "status": "Done",
@@ -86,29 +92,12 @@
       "dueDate": "2025-07-10"
     },
     {
-      "id": 6,
+      "id": "6",
       "projectId": 1,
       "title": "Fix Bugs",
       "status": "To Do",
       "priority": "Low",
       "dueDate": "2025-07-11"
-    }
-  ],
-
-  "notifications": [
-    {
-      "id": 1,
-      "message": "New task assigned to you.",
-      "read": false,
-      "userId": 3,
-      "createdAt": "2025-06-25T10:30:00"
-    },
-    {
-      "id": 2,
-      "message": "Dashboard charts updated.",
-      "read": true,
-      "userId": 2,
-      "createdAt": "2025-06-24T16:45:00"
     }
   ]
 }

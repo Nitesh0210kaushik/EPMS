@@ -5,53 +5,46 @@
     <nav class="sidebar-nav">
       <a
         mat-button
-        (click)="goTo('dashboard')"
         routerLink="/dashboard"
-        routerLinkActive="active"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         <mat-icon>dashboard</mat-icon>
         <span>Dashboard</span>
+        <span class="active-dot" *ngIf="isActive('/dashboard')"></span>
       </a>
-      <a
-        mat-button
-        (click)="goTo('projects')"
-        routerLink="/projects"
-        routerLinkActive="active"
-      >
+
+      <a mat-button routerLink="/projects" routerLinkActive="active-link">
         <mat-icon>folder</mat-icon>
         <span>Projects</span>
+        <span class="active-dot" *ngIf="isActive('/projects')"></span>
       </a>
-      <a
-        (click)="goTo('tasks')"
-        mat-button
-        routerLink="/tasks"
-        routerLinkActive="active"
-      >
+
+      <a mat-button routerLink="/tasks" routerLinkActive="active-link">
         <mat-icon>assignment</mat-icon>
         <span>Tasks</span>
+        <span class="active-dot" *ngIf="isActive('/tasks')"></span>
       </a>
+
       <a
         mat-button
         *ngIf="role === 'Admin'"
         routerLink="/users"
-        routerLinkActive="active"
+        routerLinkActive="active-link"
       >
         <mat-icon>group</mat-icon>
         <span>Users</span>
+        <span class="active-dot" *ngIf="isActive('/users')"></span>
       </a>
-      <a
-        (click)="goTo('notifications')"
-        mat-button
-        routerLink="/notifications"
-        routerLinkActive="active"
-      >
+
+      <a mat-button routerLink="/notifications" routerLinkActive="active-link">
         <mat-icon>notifications</mat-icon>
         <span>Notifications</span>
+        <span class="active-dot" *ngIf="isActive('/notifications')"></span>
       </a>
     </nav>
   </mat-sidenav>
 
-  <!-- MAIN CONTENT -->
   <mat-sidenav-content class="main-content">
     <ng-content></ng-content>
   </mat-sidenav-content>

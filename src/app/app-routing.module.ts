@@ -1,44 +1,52 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './core/core/guard/auth.guard';
+import { DashboardComponent } from './dashboard/components/dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+
   {
     path: 'login',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
+
   {
-    path: 'dashboard',
-    // canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-  },
-  {
-    path: 'projects',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./projects/projects.module').then((m) => m.ProjectsModule),
-  },
-  {
-    path: 'tasks',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./tasks/tasks.module').then((m) => m.TasksModule),
-  },
-  {
-    path: 'users',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./users/users.module').then((m) => m.UsersModule),
-  },
-  {
-    path: 'notifications',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./notifications/notifications.module').then(
-        (m) => m.NotificationsModule
-      ),
+    path: '',
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+        data: { title: 'Dashboard', icon: 'dashboard' },
+      },
+      {
+        path: 'projects',
+        loadChildren: () =>
+          import('./projects/projects.module').then((m) => m.ProjectsModule),
+        data: { title: 'Projects', icon: 'folder' },
+      },
+      {
+        path: 'tasks',
+        loadChildren: () =>
+          import('./tasks/tasks.module').then((m) => m.TasksModule),
+        data: { title: 'Tasks', icon: 'assignment' },
+      },
+      {
+        path: 'users',
+        loadChildren: () =>
+          import('./users/users.module').then((m) => m.UsersModule),
+        data: { title: 'Users', icon: 'group' },
+      },
+      {
+        path: 'notifications',
+        loadChildren: () =>
+          import('./notifications/notifications.module').then(
+            (m) => m.NotificationsModule
+          ),
+        data: { title: 'Notifications', icon: 'notifications' },
+      },
+    ],
   },
 ];
 

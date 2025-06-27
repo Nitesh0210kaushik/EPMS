@@ -1,17 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss',
+  styleUrls: ['./sidebar.component.scss'],
 })
-export class SidebarComponent {
-  role = localStorage.getItem('role');
-  constructor(private router: Router) {}
+export class SidebarComponent implements OnInit {
+  role: string | null = null;
+  isMobile = false;
 
-  goTo(path: string) {
-    console.log('path', path);
-    this.router.navigate([`/${path}`]);
+  constructor(
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  ngOnInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.role = localStorage.getItem('role');
+    }
+  }
+
+  isActive(path: string): boolean {
+    return this.router.url.startsWith(path);
   }
 }

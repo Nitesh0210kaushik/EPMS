@@ -1,0 +1,33 @@
+mat-sidenav {
+  width: 220px;
+  position: fixed;
+}
+
+.layout-container {
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+}
+
+.menu-icon {
+  position: fixed;
+  top: 16px;
+  // left: 16px;
+  right: 16px;
+  z-index: 2000;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 600px) {
+  .menu-icon {
+    display: none;
+  }
+}
+
+.main-content {
+  padding: 16px;
+}

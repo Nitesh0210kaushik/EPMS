@@ -1,1 +1,7 @@
-<p>tasks works!</p>
+<ng-container *ngFor="let project of tasks">
+  <h2>{{ project.name }}</h2>
+  <button (click)="addTask(project.id)" mat-raised-button color="primary">
+    + Add Task
+  </button>
+  <hr />
+</ng-container>

@@ -18,27 +18,23 @@ export class UserService {
   private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
-
-  // ✅ Get all users
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${this.apiUrl}/users`);
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/users`);
   }
 
-  // ✅ Delete user by ID
-  deleteUser(id: number): Observable<any> {
+  getUser(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/users/${id}`);
+  }
+
+  createUser(user: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/users`, user);
+  }
+
+  updateUser(id: string, user: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/users/${id}`, user);
+  }
+
+  deleteUser(id: string): Observable<any> {
     return this.http.delete(`${this.apiUrl}/users/${id}`);
-  }
-
-  // 🔁 Optional methods for admin/user-management
-  getUserById(id: number): Observable<User> {
-    return this.http.get<User>(`${this.apiUrl}/users/${id}`);
-  }
-
-  createUser(user: User): Observable<User> {
-    return this.http.post<User>(`${this.apiUrl}/users`, user);
-  }
-
-  updateUser(id: number, user: User): Observable<User> {
-    return this.http.put<User>(`${this.apiUrl}/users/${id}`, user);
   }
 }
