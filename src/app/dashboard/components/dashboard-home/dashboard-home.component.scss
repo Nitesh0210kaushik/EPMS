@@ -1,29 +1,21 @@
-.layout-container {
-  height: 100vh;
-}
-
-mat-sidenav {
-  width: 220px; /* ✅ fixed width, not 100% or too large */
-  position: fixed;
-}
-
-.main-content {
-  padding: 16px;
-  background: #f5f5f5;
-}
-
 .dashboard-home {
   padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .kpi-cards {
   display: flex;
   gap: 16px;
   margin-bottom: 24px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .kpi-card {
-  flex: 1;
+  min-width: 200px;
+  flex: 0 0 auto;
   text-align: center;
   padding: 16px;
 }
@@ -41,4 +33,40 @@ mat-sidenav {
 
 .chart-card {
   padding: 20px;
+}
+
+/* ✅ Ensures chart scrolls horizontally if content overflows */
+.chart-scroll-container {
+  overflow-x: auto;
+  width: 100%;
+  padding-bottom: 10px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ✅ Force a min-width on the chart to make it scrollable */
+.chart-scroll-container .chart-wrapper {
+  min-width: 600px; /* You can increase if needed */
+}
+
+/* Or directly target svg inside ngx-charts */
+.chart-scroll-container svg {
+  min-width: 600px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-home {
+    padding: 10px;
+  }
+
+  .chart-card {
+    padding: 10px;
+  }
+
+  .kpi-value {
+    font-size: 24px;
+  }
+
+  .kpi-title {
+    font-size: 14px;
+  }
 }

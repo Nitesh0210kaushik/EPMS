@@ -1,1 +1,23 @@
-<p>notifications works!</p>
+<h2>Notifications</h2>
+<mat-list>
+  <mat-list-item
+    *ngFor="let notification of notifications"
+    [class.unread]="!notification.read"
+  >
+    <mat-icon mat-list-icon>
+      {{ notification.read ? "notifications" : "notifications_active" }}
+    </mat-icon>
+    <div mat-line>{{ notification.message }}</div>
+    <div mat-line class="timestamp">
+      {{ notification.createdAt | date : "short" }}
+    </div>
+    <button
+      *ngIf="!notification.read"
+      mat-button
+      color="primary"
+      (click)="markAsRead(notification.id)"
+    >
+      Mark as Read
+    </button>
+  </mat-list-item>
+</mat-list>

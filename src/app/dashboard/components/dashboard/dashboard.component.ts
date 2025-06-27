@@ -31,7 +31,7 @@ export class DashboardComponent implements OnInit {
         const routeData = currentRoute.snapshot.data;
         if (routeData['title']) {
           this.title = routeData['title'];
-          this.icon = routeData['icon'] || 'dashboard';
+          this.icon = routeData['icon'];
         }
       });
   }

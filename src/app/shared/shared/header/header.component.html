@@ -1,9 +1,17 @@
 <div class="header">
   <div class="header-left">
     <mat-icon>{{ icon }}</mat-icon>
-    <span>{{ title }}</span>
+    <span class="title">{{ title }}</span>
   </div>
   <div class="header-right">
-    <div class="avatar">A</div>
+    <div class="user-menu">
+      <div class="avatar">A</div>
+      <div class="dropdown">
+        <button (click)="logout()" class="logout-btn">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

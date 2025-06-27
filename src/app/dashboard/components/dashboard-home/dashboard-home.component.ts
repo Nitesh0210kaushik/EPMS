@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { Color, ScaleType } from '@swimlane/ngx-charts';
 import { DashboardService } from '../../services/dashboard.service';
-import { log } from 'console';
 
 @Component({
   selector: 'app-dashboard-home',
   templateUrl: './dashboard-home.component.html',
   styleUrls: ['./dashboard-home.component.scss'],
-  // standalone: true,
 })
 export class DashboardHomeComponent implements OnInit {
   title = 'Dashboard';
@@ -19,6 +17,8 @@ export class DashboardHomeComponent implements OnInit {
   userCount = 0;
   overdueTasks = 0;
   taskStatusData: any[] = [];
+
+  chartView: [number, number] = [700, 350];
 
   colorScheme: Color = {
     name: 'customScheme',
@@ -44,6 +44,7 @@ export class DashboardHomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.onResize();
     this.dashboardService.getKpiSummary().subscribe((data) => {
       console.log('data', data);
       this.projectCount = data.projectCount;
@@ -52,5 +53,11 @@ export class DashboardHomeComponent implements OnInit {
       this.taskStatusData = data.taskStatusData;
       console.log('Chart Data:', this.taskStatusData);
     });
+  }
+
+  @HostListener('window:resize', [])
+  onResize(): void {
+    const width = window.innerWidth;
+    this.chartView = [width < 768 ? 350 : 700, 350];
   }
 }

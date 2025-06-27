@@ -15,22 +15,25 @@
       <div class="kpi-value">{{ overdueTasks }}</div>
     </mat-card>
   </div>
-
   <mat-card class="chart-card">
     <h3 class="chart-title">Task Distribution</h3>
-    <ngx-charts-bar-vertical
-      [view]="[700, 350]"
-      [results]="taskStatusData"
-      [scheme]="colorScheme"
-      [gradient]="false"
-      [xAxis]="true"
-      [yAxis]="true"
-      [legend]="true"
-      [showXAxisLabel]="true"
-      [xAxisLabel]="'Status'"
-      [showYAxisLabel]="true"
-      [yAxisLabel]="'Number of Tasks'"
-    >
-    </ngx-charts-bar-vertical>
+    <div class="chart-scroll-container">
+      <div class="chart-wrapper">
+        <ngx-charts-bar-vertical
+          [view]="chartView"
+          [results]="taskStatusData"
+          [scheme]="colorScheme"
+          [gradient]="false"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="true"
+          [showXAxisLabel]="true"
+          [xAxisLabel]="'Status'"
+          [showYAxisLabel]="true"
+          [yAxisLabel]="'Number of Tasks'"
+        >
+        </ngx-charts-bar-vertical>
+      </div>
+    </div>
   </mat-card>
 </div>
