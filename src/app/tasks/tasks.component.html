@@ -1,7 +1,44 @@
-<ng-container *ngFor="let project of tasks">
-  <h2>{{ project.name }}</h2>
-  <button (click)="addTask(project.id)" mat-raised-button color="primary">
-    + Add Task
-  </button>
-  <hr />
-</ng-container>
+<div class="task-container">
+  <ng-container *ngFor="let project of projects">
+    <mat-card class="project-section">
+      <mat-card-header class="tasks-header">
+        <mat-card-title>{{ project.name }}</mat-card-title>
+        <button mat-raised-button color="primary" (click)="addTask(project.id)">
+          + Add Task
+        </button>
+      </mat-card-header>
+      <!-- <ng-container *ngFor="let task of project.tasks">
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select
+            [value]="task.status"
+            (selectionChange)="updateStatus(task, $event.value)"
+          >
+            <mat-option value="To Do">To Do</mat-option>
+            <mat-option value="In Progress">In Progress</mat-option>
+            <mat-option value="Done">Done</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </ng-container> -->
+
+      <div
+        cdkDropList
+        [cdkDropListData]="tasksByProject[project.id]"
+        (cdkDropListDropped)="drop($event, project.id)"
+        class="task-list"
+      >
+        <mat-card
+          *ngFor="let task of tasksByProject[project.id]"
+          class="task-card"
+          cdkDrag
+        >
+          <mat-card-title>{{ task.title }}</mat-card-title>
+          <mat-card-subtitle>
+            Priority: {{ task.priority }} | Status: {{ task.status }} | Due:
+            {{ task.dueDate | date }}
+          </mat-card-subtitle>
+        </mat-card>
+      </div>
+    </mat-card>
+  </ng-container>
+</div>

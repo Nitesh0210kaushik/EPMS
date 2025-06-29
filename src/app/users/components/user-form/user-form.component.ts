@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../core/core/services/user.service';
@@ -14,16 +15,23 @@ export class UserFormComponent implements OnInit {
   userId: any;
   role: string | null = '';
   pageTitle = 'Create User';
+  isBrowser: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   ngOnInit(): void {
-    this.role = localStorage.getItem('role');
+    this.isBrowser = isPlatformBrowser(this.platformId);
+
+    if (this.isBrowser) {
+      this.role = localStorage.getItem('role');
+    }
+
     const idParam = this.route.snapshot.paramMap.get('id');
     this.isEdit = !!idParam;
 
@@ -39,8 +47,12 @@ export class UserFormComponent implements OnInit {
         this.userForm.patchValue({
           email: user.email,
           role: user.role,
-          ...(this.role === 'Admin' && { password: '' }),
         });
+
+        // Optional: Only allow password change for admin
+        if (this.role === 'Admin') {
+          this.userForm.patchValue({ password: '' });
+        }
       });
     }
   }

@@ -97,8 +97,8 @@ button[mat-raised-button] {
 
 @media (max-width: 768px) {
   .project-list {
-    padding: 16px;
-    gap: 16px;
+    padding: 0px;
+    gap: 10px;
   }
   .search-field {
     flex: -1 -1 300px !important;

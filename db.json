@@ -20,6 +20,12 @@
       "password": "123456",
       "role": "Developer",
       "token": "mock-token-developer"
+    },
+    {
+      "id": "8452",
+      "email": "nitesh2kaushik@gmail.com",
+      "role": "Admin",
+      "password": "123456"
     }
   ],
   "projects": [
@@ -97,7 +103,7 @@
       "priority": "High",
       "dueDate": "2025-06-27T18:30:00.000Z",
       "status": "To Do",
-      "projectId": 1
+      "projectId": 2
     },
     {
       "id": "50a8",
