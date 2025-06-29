@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TaskService } from '../../../core/core/services/task.service';
 import { ProjectService } from '../../../core/core/services/project.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-task-form',
@@ -21,7 +22,8 @@ export class TaskFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private taskService: TaskService,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -74,12 +76,18 @@ export class TaskFormComponent implements OnInit {
     const taskData = this.taskForm.value;
 
     if (this.isEdit) {
-      this.taskService.updateTask(this.taskId, taskData).subscribe(() => {
-        this.router.navigate([`/projects/${this.projectId}/tasks`]);
+      this.taskService.updateTask(this.taskId, taskData).subscribe((res) => {
+        if (res) {
+          this.toastrService.success('Task Updated Successfully');
+          this.router.navigate([`/tasks`]);
+        }
       });
     } else {
-      this.taskService.addTask(taskData).subscribe(() => {
-        this.router.navigate([`/projects/${this.projectId}/tasks`]);
+      this.taskService.addTask(taskData).subscribe((res) => {
+        if (res) {
+          this.toastrService.success('Task created successfully');
+          this.router.navigate([`/tasks`]);
+        }
       });
     }
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from '../../../core/core/services/project.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-project-form',
@@ -17,7 +18,8 @@ export class ProjectFormComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private toastService: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -50,10 +52,12 @@ export class ProjectFormComponent implements OnInit {
       this.projectService
         .updateProject(this.projectId, projectData)
         .subscribe(() => {
+          this.toastService.success('Updated successfully');
           this.router.navigate(['/projects']);
         });
     } else {
       this.projectService.createProject(projectData).subscribe(() => {
+        this.toastService.success('Created successfully');
         this.router.navigate(['/projects']);
       });
     }

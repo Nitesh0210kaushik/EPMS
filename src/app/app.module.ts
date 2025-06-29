@@ -14,10 +14,18 @@ import {
 } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { authInterceptor } from './core/core/services/auth.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, SharedModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SharedModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+  ],
   providers: [
     provideClientHydration(),
     provideHttpClient(withFetch(), withInterceptors([authInterceptor])),

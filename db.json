@@ -30,22 +30,30 @@
   ],
   "projects": [
     {
-      "id": "1",
       "name": "EPMS Redesign",
       "status": "Active",
-      "assignedUsers": [1, 2]
+      "assignedUsers": [
+        1,
+        2
+      ],
+      "id": "1"
     },
     {
       "id": "2",
       "name": "CRM Integration Project",
       "status": "Completed",
-      "assignedUsers": [2, 3]
+      "assignedUsers": [
+        2,
+        3
+      ]
     },
     {
       "id": "3",
       "name": "Bug Tracking System",
       "status": "Pending",
-      "assignedUsers": [1]
+      "assignedUsers": [
+        1
+      ]
     }
   ],
   "tasks": [
@@ -112,6 +120,30 @@
       "dueDate": "2025-06-27T18:30:00.000Z",
       "status": "To Do",
       "projectId": 1
+    },
+    {
+      "id": "7646",
+      "title": "Bug Tracking start",
+      "priority": "High",
+      "dueDate": "2025-06-29T18:30:00.000Z",
+      "status": "In Progress",
+      "projectId": 3
+    },
+    {
+      "id": "0e0f",
+      "title": "API TESTING",
+      "priority": "Medium",
+      "dueDate": "2025-06-29T18:30:00.000Z",
+      "status": "In Progress",
+      "projectId": 2
+    },
+    {
+      "id": "43ef",
+      "title": "Bug CRM",
+      "priority": "High",
+      "dueDate": "2025-07-08T18:30:00.000Z",
+      "status": "In Progress",
+      "projectId": 3
     }
   ],
   "notifications": [
