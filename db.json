@@ -27,27 +27,19 @@
       "id": "1",
       "name": "EPMS Redesign",
       "status": "Active",
-      "assignedUsers": [
-        1,
-        2
-      ]
+      "assignedUsers": [1, 2]
     },
     {
       "id": "2",
       "name": "CRM Integration Project",
       "status": "Completed",
-      "assignedUsers": [
-        2,
-        3
-      ]
+      "assignedUsers": [2, 3]
     },
     {
       "id": "3",
       "name": "Bug Tracking System",
       "status": "Pending",
-      "assignedUsers": [
-        1
-      ]
+      "assignedUsers": [1]
     }
   ],
   "tasks": [
@@ -114,6 +106,22 @@
       "dueDate": "2025-06-27T18:30:00.000Z",
       "status": "To Do",
       "projectId": 1
+    }
+  ],
+  "notifications": [
+    {
+      "id": "1",
+      "message": "New task assigned to you.",
+      "read": false,
+      "userId": 1,
+      "createdAt": "2025-06-25T10:30:00"
+    },
+    {
+      "id": "2",
+      "message": "Dashboard charts updated.",
+      "read": true,
+      "userId": 2,
+      "createdAt": "2025-06-24T16:45:00"
     }
   ]
 }

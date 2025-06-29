@@ -1,6 +1,6 @@
-import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,7 +9,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class SidebarComponent implements OnInit {
   role: string | null = null;
-  isMobile = false;
+  isMobile: boolean = false;
 
   constructor(
     private router: Router,
@@ -19,6 +19,12 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.role = localStorage.getItem('role');
+
+      this.isMobile = window.innerWidth <= 768;
+
+      window.addEventListener('resize', () => {
+        this.isMobile = window.innerWidth <= 768;
+      });
     }
   }
 

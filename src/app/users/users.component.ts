@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 import { UserService } from '../core/core/services/user.service';
 
 @Component({
@@ -16,18 +17,25 @@ export class UsersComponent implements OnInit {
   sortKey: string = '';
   sortOrder: 'asc' | 'desc' = 'asc';
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
   ngOnInit(): void {
     this.loadUsers();
-    this.role = localStorage.getItem('role');
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.role = localStorage.getItem('role');
+    }
   }
 
   loadUsers(): void {
     this.userService.getUsers().subscribe((res) => {
       this.users = res;
       this.filteredUsers = [...res];
-      this.search(); // Apply filtering + sorting initially
+      this.search();
     });
   }
 
