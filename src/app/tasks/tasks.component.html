@@ -7,19 +7,6 @@
           + Add Task
         </button>
       </mat-card-header>
-      <!-- <ng-container *ngFor="let task of project.tasks">
-        <mat-form-field>
-          <mat-label>Status</mat-label>
-          <mat-select
-            [value]="task.status"
-            (selectionChange)="updateStatus(task, $event.value)"
-          >
-            <mat-option value="To Do">To Do</mat-option>
-            <mat-option value="In Progress">In Progress</mat-option>
-            <mat-option value="Done">Done</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </ng-container> -->
 
       <div
         cdkDropList
@@ -37,6 +24,19 @@
             Priority: {{ task.priority }} | Status: {{ task.status }} | Due:
             {{ task.dueDate | date }}
           </mat-card-subtitle>
+
+          <mat-card-actions align="end">
+            <button mat-icon-button color="primary" (click)="editTask(task.id)">
+              <mat-icon>edit</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteTask(task.id, project.id)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-card-actions>
         </mat-card>
       </div>
     </mat-card>

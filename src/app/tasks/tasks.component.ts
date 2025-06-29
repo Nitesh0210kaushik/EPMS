@@ -3,6 +3,7 @@ import { TaskService } from '../core/core/services/task.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { ProjectService } from '../core/core/services/project.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tasks',
@@ -17,7 +18,8 @@ export class TasksComponent implements OnInit {
     private taskService: TaskService,
     private route: ActivatedRoute,
     private router: Router,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +55,26 @@ export class TasksComponent implements OnInit {
     const updatedTask = { ...task, status: newStatus };
     this.taskService.updateTask(task.id, updatedTask).subscribe(() => {
       task.status = newStatus;
+      this.toast.success('Updated');
+    });
+  }
+
+  editTask(projectId: number): void {
+    this.router.navigate([`/tasks/edit/${projectId}`]);
+  }
+
+  deleteTask(taskId: number, projectId: number): void {
+    if (confirm('Are you sure you want to delete this task?')) {
+      this.taskService.deleteTask(taskId).subscribe(() => {
+        this.loadTasksForProject(projectId);
+        this.toast.info('Task Deleted Successfully');
+      });
+    }
+  }
+
+  loadTasksForProject(projectId: number): void {
+    this.taskService.getTasksByProject(projectId).subscribe((tasks) => {
+      this.tasksByProject[projectId] = tasks;
     });
   }
 }

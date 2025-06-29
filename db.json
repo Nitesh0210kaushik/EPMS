@@ -22,10 +22,10 @@
       "token": "mock-token-developer"
     },
     {
-      "id": "8452",
       "email": "nitesh2kaushik@gmail.com",
       "role": "Admin",
-      "password": "123456"
+      "password": "111111",
+      "id": "8452"
     }
   ],
   "projects": [
@@ -90,58 +90,26 @@
       "dueDate": "2025-07-09"
     },
     {
-      "id": "5",
-      "projectId": 3,
       "title": "Final Deployment",
-      "status": "Done",
-      "priority": "High",
-      "dueDate": "2025-07-10"
-    },
-    {
-      "id": "6",
-      "projectId": 1,
-      "title": "Fix Bugs",
-      "status": "To Do",
-      "priority": "Low",
-      "dueDate": "2025-07-11"
-    },
-    {
-      "id": "181e",
-      "title": "ProjectSetup",
-      "priority": "High",
-      "dueDate": "2025-06-27T18:30:00.000Z",
-      "status": "To Do",
-      "projectId": 2
-    },
-    {
-      "id": "50a8",
-      "title": "ProjectSetup",
-      "priority": "High",
-      "dueDate": "2025-06-27T18:30:00.000Z",
-      "status": "To Do",
-      "projectId": 1
-    },
-    {
-      "id": "7646",
-      "title": "Bug Tracking start",
-      "priority": "High",
-      "dueDate": "2025-06-29T18:30:00.000Z",
-      "status": "In Progress",
-      "projectId": 3
-    },
-    {
-      "id": "0e0f",
-      "title": "API TESTING",
       "priority": "Medium",
-      "dueDate": "2025-06-29T18:30:00.000Z",
-      "status": "In Progress",
-      "projectId": 2
+      "dueDate": "2025-07-10",
+      "status": "Done",
+      "projectId": 3,
+      "id": "5"
     },
     {
-      "id": "43ef",
-      "title": "Bug CRM",
+      "title": "Fix Bugs",
+      "priority": "Medium",
+      "dueDate": "2025-07-11",
+      "status": "Done",
+      "projectId": 1,
+      "id": "6"
+    },
+    {
+      "id": "0e24",
+      "title": "b",
       "priority": "High",
-      "dueDate": "2025-07-08T18:30:00.000Z",
+      "dueDate": "2025-06-29T18:30:00.000Z",
       "status": "In Progress",
       "projectId": 3
     }

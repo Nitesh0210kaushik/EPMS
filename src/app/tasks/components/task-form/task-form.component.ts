@@ -14,7 +14,9 @@ export class TaskFormComponent implements OnInit {
   taskForm!: FormGroup;
   isEdit = false;
   projectId!: number;
-  taskId!: number;
+  // taskId!: number;
+  taskId!: string;
+
   projectName: string = '';
 
   constructor(
@@ -36,7 +38,7 @@ export class TaskFormComponent implements OnInit {
 
       this.route.paramMap.subscribe((params) => {
         const tid = params.get('id');
-        this.taskId = tid ? +tid : 0;
+        this.taskId = tid || '';
         this.isEdit = !!this.taskId;
 
         this.initForm();
